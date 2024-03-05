@@ -1,0 +1,148 @@
+﻿<Page x:Class="WpfApp_FileSystemIntegrityCheck.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp_FileSystemIntegrityCheck"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="Page1">
+    <Page.Resources>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="adr" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <Grid>
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                <TextBlock x:Name="placeHolderTextBlock"
+                                           Foreground="Gray"
+                                           Text="Улица №,кв."
+                                           FontSize="{TemplateBinding FontSize}"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                           Margin="5,0,0,0"
+                                           Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Visibility" TargetName="placeHolderTextBlock" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="nomer" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="36*"/>
+                                    <ColumnDefinition Width="79*"/>
+                                </Grid.ColumnDefinitions>
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" Grid.ColumnSpan="2" Margin="0,0,0.333,0"/>
+                                <TextBlock x:Name="placeHolderTextBlock2"
+                                           Foreground="Gray"
+                                           Text ="+375---------"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                           Margin="5,0,-0.667,0"
+                                           Visibility="Collapsed" Grid.ColumnSpan="2"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Visibility" TargetName="placeHolderTextBlock2" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <Grid Name="GridName"  Background="#628B4C">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Rectangle HorizontalAlignment="Left" Height="327" Margin="501,24,0,0" VerticalAlignment="Top" Width="240" RadiusX="20" RadiusY="20" Fill="#FFA1B1A1" IsEnabled="False"/>
+        <TextBox x:Name="folderPath" IsReadOnly="True" HorizontalAlignment="Left" Height="20" Margin="529,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" BorderThickness="0,0,0,1" BorderBrush="Black" Background="#FFA1B1A1" TextAlignment="Center"/>
+
+        <Button x:Name="OpenDirectoryButton" Content="Выбрать папку" HorizontalAlignment="Left" Height="34" Margin="566,125,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.163,0.576" Click="OpenDirectoryButton_Click"/>
+        <Button x:Name="Label_Button" FontFamily="OCR A Extended" Content="DIRECTORY INTEGRITY" HorizontalAlignment="Left" Height="58" Margin="26,28,0,0" VerticalAlignment="Top" Width="421" RenderTransformOrigin="-0.148,0.488" FontSize="36" Foreground="#FF054A07" Background="#FF628B4C" BorderBrush="{x:Null}" Click="Label_Button_Click"/>
+        <Label Content="1. Выберите папку для проверки" HorizontalAlignment="Left" Margin="519,64,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="filePath" IsReadOnly="True" HorizontalAlignment="Left" Height="19" Margin="526,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" BorderThickness="0,0,0,1" BorderBrush="Black" Background="#FFA1B1A1" TextAlignment="Center" OpacityMask="Black"/>
+        <Button x:Name="OpenFileButton" Content="Выбрать файл" HorizontalAlignment="Left" Height="34" Margin="526,271,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.163,0.576" Click="OpenFileButton_Click"/>
+        <Label Content="2. Выберите файл для повреждения" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="509,206,0,0"/>
+        <Button x:Name="DamageFileButton" Content="🔨" HorizontalAlignment="Left" Height="25" Margin="678,275,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.163,0.576" Click="DamageFileButton_Click"/>
+        <Label Content="Проверьте целостность выбранной файловой системы" HorizontalAlignment="Left" Margin="453,376,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF013102"/>
+        <Button x:Name="CheckIntegrityButton" Content="Проверить" HorizontalAlignment="Left" Height="34" Margin="567,411,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.163,0.576" Click="CheckIntegrityButton_Click" IsEnabled="False"/>
+        <Label x:Name="timetext" Content="" HorizontalAlignment="Left" Margin="185,398,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="211" Margin="76,113,0,0" VerticalAlignment="Top" Width="342" Source="/unnamed-removebg-preview.png"/>
+
+    </Grid>
+</Page>

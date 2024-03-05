@@ -1,0 +1,38 @@
+﻿<Page x:Class="WpfApp_FileSystemIntegrityCheck.Page2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp_FileSystemIntegrityCheck"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page2">
+
+    <Grid>
+        <Grid x:Name="GridName"  Background="#628B4C" Margin="0,0,0,-100">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Rectangle HorizontalAlignment="Center" Height="400" Margin="41,84,41,0" VerticalAlignment="Top" Width="718" RadiusX="20" RadiusY="20" Fill="#FFA1B1A1" IsEnabled="False"/>
+            <Label x:Name="timetext" Content="" HorizontalAlignment="Left" Margin="185,398,0,0" VerticalAlignment="Top"/>
+            <DataGrid x:Name="dataGridXAML" HorizontalAlignment="Left" Height="391" Margin="50,94,0,0" VerticalAlignment="Top" Width="500" SelectionChanged="dataGridXAML_SelectionChanged" OpacityMask="Black" Background="#FFA1B1A1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Имя файла" Binding="{Binding Name}" Width="100"/>
+                    <DataGridTextColumn Header="Расположение файла" Binding="{Binding Path}" Width="150"/>
+                    <DataGridTextColumn Header="Результат проверки" Binding="{Binding CheckState}" Width="120"/>
+                    <DataGridTextColumn Header="Вид ошибки" Binding="{Binding ErrorType}" Width="80"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="ToJSONButton" Content="Сохранить&#xD;&#xA;в .json" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="623,411,0,0" VerticalAlignment="Top" Click="ToJSONButton_Click"/>
+            <Label x:Name="fileSystemTypeLabel" Content="Тип файловой системы:" HorizontalAlignment="Left" Margin="553,94,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="driveSizeLabel" Content="Размер диска:" HorizontalAlignment="Left" Margin="555,125,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="sectorSizeLabel" Content="Размер сектора:" HorizontalAlignment="Left" Margin="555,156,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="fileSystemTypeAnswer" Content="" HorizontalAlignment="Left" Margin="699,94,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="driveSizeAnswer" Content="" HorizontalAlignment="Left" Margin="649,125,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="sectorSizeAnswer" Content="" HorizontalAlignment="Left" Margin="659,156,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Button x:Name="Label_Button" FontFamily="OCR A Extended" Content="DIRECTORY INTEGRITY" HorizontalAlignment="Left" Height="58" Margin="26,28,0,0" VerticalAlignment="Top" Width="421" RenderTransformOrigin="-0.148,0.488" FontSize="36" Foreground="#FF054A07" Background="#FF628B4C" BorderBrush="{x:Null}"/>
+        </Grid>
+
+    </Grid>
+</Page>
